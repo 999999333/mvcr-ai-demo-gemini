@@ -1,0 +1,4 @@
+source_files/
+.venv/
+files_metadata.csv
+file_search_store_name.txt

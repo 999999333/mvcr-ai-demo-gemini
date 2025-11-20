@@ -128,6 +128,10 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
         
+        # Display disclaimer for assistant messages
+        if message["role"] == "assistant":
+            st.caption("⚠️ Odpovědi jsou generovány pomocí umělé inteligence a nejsou právně závazné.")
+        
         # Display sources if available
         if message["role"] == "assistant" and "sources" in message:
             with st.expander("📚 Zobrazit zdroje"):
@@ -166,6 +170,9 @@ if 'example_question' in st.session_state:
             
             # Display final response without cursor
             message_placeholder.markdown(full_response)
+            
+            # Display disclaimer
+            st.caption("⚠️ Odpovědi jsou generovány pomocí umělé inteligence a nejsou právně závazné. Pro právní poradenství se prosím obraťte na kvalifikovaného právníka.")
             
             # Extract sources from grounding metadata
             sources = []
@@ -239,6 +246,9 @@ if prompt := st.chat_input("Položte svou otázku..."):
             
             # Display final response without cursor
             message_placeholder.markdown(full_response)
+            
+            # Display disclaimer
+            st.caption("⚠️ Odpovědi jsou generovány pomocí umělé inteligence a nejsou právně závazné. Pro právní poradenství se prosím obraťte na kvalifikovaného právníka.")
             
             # Extract sources from grounding metadata
             sources = []

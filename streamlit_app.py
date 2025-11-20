@@ -13,13 +13,13 @@ st.set_page_config(
 # Initialize the Gemini API client
 @st.cache_resource
 def get_gemini_client():
-    api_key = os.environ.get('GEMINI_API_KEY', '***REMOVED***')
+    api_key = st.secrets["GEMINI_API_KEY"]
     return genai.Client(api_key=api_key)
 
 # Load file search store name
 @st.cache_data
 def get_file_search_store_name():
-    return os.environ.get('FILE_SEARCH_STORE_NAME', "fileSearchStores/mvcraidocs-h8ynqvk4r9rx")
+    return st.secrets["FILE_SEARCH_STORE_NAME"]
 
 # Initialize session state for chat history and chat session
 if 'messages' not in st.session_state:

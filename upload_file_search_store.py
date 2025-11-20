@@ -186,6 +186,9 @@ print("="*60)
 
 for file_name, operation in operations:
     try:
+        
+        operation = client.operations.get(operation)
+        
         # Wait until import is complete
         while not operation.done:
             time.sleep(1)
